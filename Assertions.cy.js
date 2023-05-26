@@ -35,11 +35,6 @@ describe ("Assertions Demo",()=>{
 
         cy.xpath('//input[@name="username"]').should('have.value','Admin')  /// Assert Value
 
-
-
-
-
-
     })
 
 

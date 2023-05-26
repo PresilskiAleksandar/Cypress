@@ -1,6 +1,6 @@
 describe('Handle Dropdowns',()=>{
 
-    it.skip('DropDOwn with Select', ()=>{
+    it('DropDOwn with Select', ()=>{
         //skip TC
 
         cy.visit('https://www.zoho.com/commerce/free-demo.html')
@@ -11,7 +11,7 @@ describe('Handle Dropdowns',()=>{
 
     })
 
-    it.skip('DropDOwn without Select', ()=>{
+    it('DropDOwn without Select', ()=>{
 
         cy.visit('https://www.dummyticket.com/dummy-ticket-for-visa-application/')
 
@@ -27,7 +27,7 @@ describe('Handle Dropdowns',()=>{
 
 
 
-    it.skip('Auto Suggested DropDown', ()=>{
+    it('Auto Suggested DropDown', ()=>{
 
         cy.visit('https://wikipedia.org')
 
@@ -58,9 +58,33 @@ describe('Handle Dropdowns',()=>{
         cy.get('.oxd-select-dropdown').contains('Admin').click()
 
 
+    })
 
+    it('Dynamic dropdown', ()=>{
 
-        
+        cy.visit('https://www.google.com/')
+
+        cy.get('#APjFqb').type('cypress automation')
+
+        cy.wait(2000)
+
+        cy.get('div.wM6W7d>span').should('have.lengthOf', 12)
+
+        cy.get('div.wM6W7d>span').each(($el,index,$list)=>{
+
+            if($el.text()=='cypress automation tutorial')
+
+            {
+                cy.wrap($el).click()
+            }
+            
+
+        })
+        cy.get('#APjFqb').should('have.value','cypress automation tutorial')
 
     })
+
+
+
+
 })
